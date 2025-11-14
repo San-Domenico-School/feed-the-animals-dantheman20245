@@ -20,59 +20,44 @@
  *******************************************************************************/
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField] private float playerSpeed;
-    [SerializeField] private float boostedSpeed = 45f;   // ⭐ NEW — Speed when Z is held
-    private float currentSpeed;        // ⭐ NEW — The speed used at any moment
-
-
+    private int widthofField;
     private float moveDirection;
     public float centerToEdge;
 
+
+    //Initializes variables
     private void Start()
     {
         centerToEdge = 23.1f;
-        currentSpeed = playerSpeed;    // ⭐ NEW
     }
-
+    //Executed PlayerMovement every frame
     private void Update()
     {
-        HandleSpeedBoost();            // ⭐ NEW
         PlayerMovement();
-    }
 
-    // ⭐ NEW — Handles Z-key speed boost
-    private void HandleSpeedBoost()
-    {
-        if (Keyboard.current.zKey.isPressed)
-        {
-            currentSpeed = boostedSpeed;
-        }
-        else
-        {
-            currentSpeed = playerSpeed;
-        }
     }
-
-    // Handles player input from the Unity Input System
+    //Handles PlayerInput
     public void OnMovementInput(InputAction.CallbackContext ctx)
     {
-        DeterminePlayerDirection(ctx.ReadValue<Vector2>());
+        DeterminePlayerDirection(ctx.ReadValue<Vector2>());  //Dynamic Method that sends value to DeterMine
     }
 
+    //Assings players move direction
     private void DeterminePlayerDirection(Vector2 value)
     {
-        moveDirection = value.x;
+        moveDirection = value.x; // Assigns the x-input value to moveDirection
     }
 
+    //proccess movement logic
     private void PlayerMovement()
     {
-        if ((transform.position.x < centerToEdge && moveDirection > 0) ||
-            (transform.position.x > -centerToEdge && moveDirection < 0))
+        if (transform.position.x < centerToEdge && moveDirection > 0 || transform.position.x > -centerToEdge && moveDirection < 0)
         {
-            transform.Translate(Vector3.right * currentSpeed * moveDirection * Time.deltaTime);
+            transform.Translate(Vector3.right * playerSpeed * moveDirection * Time.deltaTime);
         }
+            
     }
 }
