@@ -863,7 +863,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: b02e595f-7aa7-404c-a2ef-c343f3927013
-    m_ActionName: 'Player/Feed[/Keyboard/z]'
+    m_ActionName: 'Player/Feed[/Keyboard/z,/Keyboard/x,/Keyboard/c,/Keyboard/v,/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -882,6 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementController
   playerSpeed: 30
+  boostedSpeed: 45
   centerToEdge: 0
 --- !u!114 &954591169
 MonoBehaviour:
@@ -1556,7 +1557,7 @@ MonoBehaviour:
   - {fileID: 512673551823330125, guid: aa309d7b56ada433db2ec7e738e63a65, type: 3}
   - {fileID: 5282633150092781956, guid: 4d123a59dc93b41a488107a20acceeaa, type: 3}
   - {fileID: 1187168921522124423, guid: 0c5a330ff518c425cba2f65f54c40a96, type: 3}
-  animalsFeed: 1000
+  animalsFeed: 10
 --- !u!82 &2142483402
 AudioSource:
   m_ObjectHideFlags: 0
